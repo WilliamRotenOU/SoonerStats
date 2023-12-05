@@ -1,0 +1,7 @@
+dash==2.8.1
+pandas==2.0.1
+plotly==5.13.0
+gunicorn
+dash-tools
+cfbd
+datetime
