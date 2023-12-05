@@ -5,6 +5,7 @@ import dash
 from dash import Dash
 from flask import Flask
 from pages import players, home, games, recruiting, transfer, about
+
 main = Dash(__name__)
 
 app = Dash(__name__, title="SoonerStats")
@@ -43,59 +44,59 @@ index_str = """<!DOCTYPE html>
 
 app = Flask(__name__, instance_relative_config=True)
 dash_app = Dash(__name__,
-        server=app,
-        use_pages=True,
-        assets_folder='static',
-        index_string=index_str,
-        external_scripts=[{
-            'src': 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js',
-            'integrity': 'sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm',
-            'crossorigin': 'anonymous'
-        }],
-        external_stylesheets=[{
-            'href': 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css',
-            'integrity': 'sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9',
-            'crossorigin': 'anonymous',
-            'rel': 'stylesheet'
-        },
-        {
-            'href': 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
-            'rel': 'stylesheet'
-        }]
-    )
+                server=app,
+                use_pages=True,
+                assets_folder='static',
+                index_string=index_str,
+                external_scripts=[{
+                    'src': 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js',
+                    'integrity': 'sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm',
+                    'crossorigin': 'anonymous'
+                }],
+                external_stylesheets=[{
+                    'href': 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css',
+                    'integrity': 'sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9',
+                    'crossorigin': 'anonymous',
+                    'rel': 'stylesheet'
+                },
+                    {
+                        'href': 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+                        'rel': 'stylesheet'
+                    }]
+                )
 dash.register_page('pages.homepage',
-    path='/',
-    title='Home',
-    name='Home',
-    layout=home.layout)
+                   path='/',
+                   title='Home',
+                   name='Home',
+                   layout=home.layout)
 dash.register_page('pages.proteins',
-    path='/games',
-    title='Game Overview',
-    name='Game Overview',
-    layout=games.layout)
+                   path='/games',
+                   title='Game Overview',
+                   name='Game Overview',
+                   layout=games.layout)
 dash.register_page('pages.players',
-    path='/players',
-    title='Player Overview',
-    name='Player Overview',
-    layout=players.layout)
+                   path='/players',
+                   title='Player Overview',
+                   name='Player Overview',
+                   layout=players.layout)
 dash.register_page('pages.recruiting',
-    path='/recruiting',
-    title='Recruiting Overview',
-    name='Recruiting Overview',
-    layout=recruiting.layout)
+                   path='/recruiting',
+                   title='Recruiting Overview',
+                   name='Recruiting Overview',
+                   layout=recruiting.layout)
 dash.register_page('pages.transfer',
-    path='/transfer',
-    title='Transfer Portal',
-    name='Transfer Portal',
-    layout=transfer.layout)
+                   path='/transfer',
+                   title='Transfer Portal',
+                   name='Transfer Portal',
+                   layout=transfer.layout)
 dash.register_page('pages.about',
-    path='/about',
-    title='About',
-    name='About',
-    layout=about.layout)
+                   path='/about',
+                   title='About',
+                   name='About',
+                   layout=about.layout)
 
 with app.app_context():
     dash_app.layout = dash.page_container
 
-if __name__ == "__main__":
+if __name__ == "__app__":
     app.run(debug=True)
